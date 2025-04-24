@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:penghitung_harian/views/home_page.dart';
-import 'package:penghitung_harian/views/login_page.dart'; // Tambahkan import untuk halaman login
+import 'package:penghitung_harian/views/login_page.dart';
+import 'package:penghitung_harian/views/splash_screen.dart'
+    as Splash; // Gunakan alias untuk SplashScreen
+import 'package:penghitung_harian/views/onboarding_page.dart';
 
 void main() {
   runApp(const ExpenseTrackerApp());
@@ -48,11 +51,13 @@ class ExpenseTrackerApp extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         ),
       ),
-      initialRoute: '/login', // Set halaman login sebagai halaman awal
+      initialRoute: '/splash',
       routes: {
+        '/splash': (context) =>
+            const Splash.SplashScreen(), // Gunakan alias Splash.SplashScreen
+        '/onboarding': (context) => const OnboardingPage(),
         '/login': (context) => const LoginPage(),
-        '/dashboard': (context) =>
-            const ExpenseHomePage(), // Arahkan ke ExpenseHomePage setelah login
+        '/dashboard': (context) => const ExpenseHomePage(),
       },
     );
   }
