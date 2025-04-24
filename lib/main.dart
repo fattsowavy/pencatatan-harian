@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:penghitung_harian/views/home_page.dart';
+import 'package:penghitung_harian/views/login_page.dart'; // Tambahkan import untuk halaman login
 
 void main() {
   runApp(const ExpenseTrackerApp());
@@ -27,8 +28,32 @@ class ExpenseTrackerApp extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 16),
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.blue,
+          ),
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
       ),
-      home: const ExpenseHomePage(),
+      initialRoute: '/login', // Set halaman login sebagai halaman awal
+      routes: {
+        '/login': (context) => const LoginPage(),
+        '/dashboard': (context) =>
+            const ExpenseHomePage(), // Arahkan ke ExpenseHomePage setelah login
+      },
     );
   }
 }
