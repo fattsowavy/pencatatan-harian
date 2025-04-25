@@ -43,37 +43,45 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          Theme.of(context).primaryColor, // Menggunakan warna primer biru
-      body: Center(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFF7E63B5), Color(0xFF884377)])),
         child: FadeTransition(
           opacity: _fadeAnimation,
-          child: const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.account_balance_wallet, // Ikon dompet untuk tema keuangan
-                size: 80,
-                color: Colors.white,
-              ),
-              SizedBox(height: 16),
-              Text(
-                'Pencatatan Harian',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
+          child: const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons
+                      .account_balance_wallet, // Ikon dompet untuk tema keuangan
+                  size: 80,
                   color: Colors.white,
                 ),
-              ),
-              SizedBox(height: 8),
-              Text(
-                'Kelola pengeluaran Anda dengan mudah',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white70,
+                SizedBox(height: 16),
+                Text(
+                  'Pencatatan Harian',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-            ],
+                SizedBox(height: 8),
+                Text(
+                  'Kelola pengeluaran Anda dengan mudah',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white70,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

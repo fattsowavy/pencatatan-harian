@@ -14,7 +14,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   // Data untuk setiap slide onboarding
   final List<Map<String, String>> _onboardingData = [
     {
-      'image': 'assets/images/onboarding1.png',
+      'image': 'lib/assets/images/onboarding1.png',
       'title': 'Catat Pengeluaran dengan Mudah',
       'description': 'Tambahkan pengeluaran harian Anda dalam hitungan detik.'
     },
