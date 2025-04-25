@@ -19,7 +19,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       'description': 'Tambahkan pengeluaran harian Anda dalam hitungan detik.'
     },
     {
-      'image': 'assets/images/onboarding2.png',
+      'image': 'lib/assets/images/onboarding2.png',
       'title': 'Pantau Keuangan Anda',
       'description': 'Lihat ringkasan pengeluaran per kategori dengan jelas.'
     },

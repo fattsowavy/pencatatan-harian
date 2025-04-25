@@ -7,6 +7,7 @@ import 'package:penghitung_harian/views/onboarding_page.dart';
 import 'package:penghitung_harian/views/register_page.dart';
 import 'package:provider/provider.dart';
 
+
 void main() {
   runApp(
     MultiProvider(
