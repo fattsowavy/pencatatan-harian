@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:penghitung_harian/controllers/auth_controller.dart';
 import 'package:penghitung_harian/views/home_page.dart';
 import 'package:penghitung_harian/views/login_page.dart';
-import 'package:penghitung_harian/views/splash_screen.dart'
-    as Splash; // Gunakan alias untuk SplashScreen
+import 'package:penghitung_harian/views/splash_screen.dart';
 import 'package:penghitung_harian/views/onboarding_page.dart';
+import 'package:penghitung_harian/views/register_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const ExpenseTrackerApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthController()),
+      ],
+      child: const ExpenseTrackerApp(),
+    ),
+  );
 }
 
 class ExpenseTrackerApp extends StatelessWidget {
@@ -53,10 +62,10 @@ class ExpenseTrackerApp extends StatelessWidget {
       ),
       initialRoute: '/splash',
       routes: {
-        '/splash': (context) =>
-            const Splash.SplashScreen(), // Gunakan alias Splash.SplashScreen
+        '/splash': (context) => const SplashScreen(),
         '/onboarding': (context) => const OnboardingPage(),
         '/login': (context) => const LoginPage(),
+        '/register': (context) => const RegisterPage(),
         '/dashboard': (context) => const ExpenseHomePage(),
       },
     );

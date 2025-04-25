@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:penghitung_harian/controllers/auth_controller.dart';
 import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isPasswordVisible = false;
 
   @override
   void dispose() {
+    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -27,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Daftar'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -37,10 +39,19 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               const SizedBox(height: 40),
               const Text(
-                'Selamat Datang!',
+                'Buat Akun Baru',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
+              TextField(
+                controller: _nameController,
+                decoration: const InputDecoration(
+                  labelText: 'Nama',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.person),
+                ),
+              ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(
@@ -81,25 +92,30 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () async {
-                  bool success = await authController.login(
+                  bool success = await authController.register(
+                    _nameController.text.trim(),
                     _emailController.text.trim(),
                     _passwordController.text.trim(),
                   );
                   if (success) {
-                    Navigator.pushReplacementNamed(context, '/dashboard');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text('Registrasi berhasil! Silakan login.')),
+                    );
+                    Navigator.pushReplacementNamed(context, '/login');
                   }
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 50),
                 ),
-                child: const Text('Login'),
+                child: const Text('Daftar'),
               ),
               const SizedBox(height: 16),
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/register');
+                  Navigator.pushReplacementNamed(context, '/login');
                 },
-                child: const Text('Belum punya akun? Daftar di sini'),
+                child: const Text('Sudah punya akun? Login di sini'),
               ),
             ],
           ),
