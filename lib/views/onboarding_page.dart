@@ -24,7 +24,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       'description': 'Lihat ringkasan pengeluaran per kategori dengan jelas.'
     },
     {
-      'image': 'assets/images/onboarding3.png',
+      'image': 'lib/assets/images/onboarding3.png',
       'title': 'Atur Target dan Peringatan',
       'description': 'Tetapkan target bulanan dan dapatkan peringatan otomatis.'
     },
